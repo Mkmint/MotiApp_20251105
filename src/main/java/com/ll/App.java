@@ -49,10 +49,13 @@ public class App {
 
                 if(motivationList.size() == 0) {
                     System.out.println("해당 사항이 없습니다");
-                } else {
-                    System.out.println("해당사항 발견");
                 }
-                //System.out.printf(motivationList.toString());
+                else {
+                    for (int i = motivationList.size() - 1; i >= 0; i--) {
+                        System.out.printf("%d / %s / %s \n", motivationList.get(i).id,
+                                motivationList.get(i).motiv, motivationList.get(i).writer);
+                    }
+                }
             }
         }
 
