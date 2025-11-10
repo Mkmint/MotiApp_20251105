@@ -16,6 +16,7 @@ public class App {
     public void run() {
         SystemController systemController = new SystemController();
         MotivationController motivationController = new MotivationController(sc);
+
         System.out.println("== motivation App 실행 ==");
 
         while (true) {
