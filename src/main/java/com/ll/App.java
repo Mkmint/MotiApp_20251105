@@ -32,9 +32,12 @@ public class App {
                 motivationController.add();
             } else if (cmd.equals("list")) {
                 motivationController.list();
-            } else if(cmd.startsWith("delete")){
+            } else if(cmd.startsWith("delete?")){
                 motivationController.delete(cmd);
+            } else if(cmd.startsWith("modify")){
+                motivationController.modify(cmd);
             }
+
             else {
                 System.out.println("그런 명령어는 없습니다.");
             }
