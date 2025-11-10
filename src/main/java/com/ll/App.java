@@ -18,7 +18,7 @@ public class App {
         int lastId = 0;
         System.out.println("==motivation App 실행==");
         while(true){
-            System.out.println("명령어) ");
+            System.out.print("명령어) ");
             String cmd = sc.nextLine().trim();
 
             if(cmd.equals("exit")){
@@ -31,7 +31,7 @@ public class App {
                 continue;
             }
 
-            if(cmd.equals("add")) {
+            else if(cmd.equals("add")) {
                 lastId++;
                 System.out.print("내용 : ");
                 String motiv = sc.nextLine().trim();
@@ -44,23 +44,27 @@ public class App {
                 motivationList.add(motivation);
 
             }
-            if(cmd.equals("list")){
+            else if(cmd.equals("list")){
                 System.out.println("번호 / 명언 / 저자 ");
 
-                if(motivationList.size() == 0) {
+                if(motivationList.isEmpty()) {
                     System.out.println("해당 사항이 없습니다");
                 }
                 else {
                     for (int i = motivationList.size() - 1; i >= 0; i--) {
                         System.out.printf("%d / %s / %s \n", motivationList.get(i).id,
-                                motivationList.get(i).motiv, motivationList.get(i).writer);
+                                motivationList.get(i).motiv.substring(0,7) + "...", motivationList.get(i).writer);
                     }
                 }
             }
+            else if(cmd.equals("delete")){
+                System.out.println("삭제할 번호를 입력하세요");
+                String id = sc.nextLine().trim();
+
+            }
+            else {
+                System.out.println("해당 명령어는 없는 명령어입니다");
+            }
         }
-
-
-
     }
-
 }
