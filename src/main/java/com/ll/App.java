@@ -52,14 +52,32 @@ public class App {
                 }
                 else {
                     for (int i = motivationList.size() - 1; i >= 0; i--) {
-                        System.out.printf("%d / %s / %s \n", motivationList.get(i).id,
-                                motivationList.get(i).motiv.substring(0,7) + "...", motivationList.get(i).writer);
+                        if (motivationList.get(i).getMotiv().length() > 7) {
+                            System.out.printf("%d / %s / %s \n", motivationList.get(i).getId(), motivationList.get(i).getMotiv().substring(0,7) + "...", motivationList.get(i).getWriter());
+                        }
+                        else {
+                            System.out.printf("%d / %s / %s \n", motivationList.get(i).getId(), motivationList.get(i).getMotiv(), motivationList.get(i).getWriter());
+                        }
                     }
                 }
             }
-            else if(cmd.equals("delete")){
-                System.out.println("삭제할 번호를 입력하세요");
-                String id = sc.nextLine().trim();
+            else if(cmd.startsWith("delete")) {
+                String[] deleteWords = cmd.split(" ");
+                int deleteId = Integer.parseInt(deleteWords[1]);
+                Motivation foundMotivation = null;
+                for (Motivation motivation : motivationList) {
+                    if (motivation.getId() == deleteId) {
+                        foundMotivation = motivation;
+                    }
+                }
+                if(foundMotivation == null) {
+                    System.out.println("해당 명언은 없습니다!");
+                    continue;
+                }
+
+                motivationList.remove(foundMotivation);
+                System.out.println(deleteId + "번 명언이 삭제되었습니다");
+
 
             }
             else {
